@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  dtc_testing_container:
+    stdin_open: true
+    tty: true
+    privileged: true
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./QGroundControl_Params:/home/dtcbuild/.config/QGroundControl.org
+      - /dev/usb:/dev/usb
+      - /dev/input:/dev/input
+    environment:
+      - DISPLAY=${DISPLAY}
+    env_file:
+      - ./project/.env
+    devices:
+      - /dev/input/js0:/dev/input/js0
+    container_name: ArdupilotController
+    # entrypoint: "/bin/bash"
+    entrypoint: ["/bin/bash", "/home/dtcbuild/project/ContainerStartup.sh"]

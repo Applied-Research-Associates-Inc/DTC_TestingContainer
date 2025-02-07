@@ -1,0 +1,9 @@
+uint8 UNKNOWN = 0
+uint8 SYNCHRONOUS = 1
+uint8 SYNCHRONOUS_REAL_TIME = 2
+uint8 SYNCHRONOUS_EXTERNAL_TRIGGER = 3
+
+uint8 sync_state
+float32 sim_time_step           # Time step for the simulation in seconds
+---
+bool success

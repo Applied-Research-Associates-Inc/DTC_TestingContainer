@@ -1,0 +1,29 @@
+version: '3.8'
+networks:
+  dtcvc-network:
+    external: true 
+services:
+  dtc_testing_container:
+    stdin_open: true
+    tty: true
+    privileged: true
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./super_client_configuration_file.xml:/home/dtcbuild/super_client_configuration_file.xml
+      - ./QGroundControl_Params:/home/dtcbuild/.config/QGroundControl.org
+      - /dev/usb:/dev/usb
+      - /dev/input:/dev/input
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DISCOVERY_SERVER=10.0.1.2:${DISCOVERY_SERVER_PORT:-11811}
+      - FASTRTPS_DEFAULT_PROFILES_FILE=/home/dtcbuild/super_client_configuration_file.xml
+    env_file:
+      - ./project/.env
+    devices:
+      - /dev/input/js0:/dev/input/js0
+    networks:
+      - dtcvc-network
+    container_name: DTCTestingContainer
+    entrypoint: ["/bin/bash", "/home/dtcbuild/project/ContainerStartup.sh"]

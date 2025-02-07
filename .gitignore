@@ -1,0 +1,9 @@
+/build/
+/project/build/
+/project/install/
+/project/log/
+/project/logs/
+/project/terrain/
+dump*
+QGroundControl_Params/QGroundControl.ini
+project/eeprom.bin

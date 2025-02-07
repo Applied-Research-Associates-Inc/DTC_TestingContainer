@@ -1,0 +1,39 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from carla_interfaces/msg/CarlaAudio.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module carla_interfaces {
+  module msg {
+    module CarlaAudio_Constants {
+      const uint32 PA_INT16 = 8;
+    };
+    @verbatim (language="comment", text=
+      "PortAudio configurations are used for this message." "\n"
+      "Refer to https://www.portaudio.com/docs/v19-doxydocs/portaudio_8h.html")
+    struct CarlaAudio {
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "The Unreal Engine outputs data in int16 format so this will always be paInt16")
+      uint32 sample_format;
+
+      @verbatim (language="comment", text=
+        "Number of audio channels (1 for mono or 2 for stereo)")
+      uint32 num_channels;
+
+      @verbatim (language="comment", text=
+        "Number of samples per second (ex. 1600)")
+      uint32 sample_rate;
+
+      @verbatim (language="comment", text=
+        "Size of each audio frame (ex. 4096)")
+      uint32 chunk_size;
+
+      @verbatim (language="comment", text=
+        "Audio data")
+      sequence<int16> data;
+    };
+  };
+};
