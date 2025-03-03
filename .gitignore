@@ -1,7 +1,8 @@
-build/
-install/
-log/
-logs/
+/build/
+/project/build/
+/project/install/
+/project/log/
+/project/logs/
 idl/
 /project/terrain/
 dump*
