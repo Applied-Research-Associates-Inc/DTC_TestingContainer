@@ -1,0 +1,10 @@
+std_msgs/Header header
+
+string vehicle_name
+
+bool collision_occurred
+float32 collision_impulse
+float32 max_impulse
+
+bool standoff_violation
+float32 current_standoff_distance

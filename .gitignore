@@ -1,9 +1,10 @@
-/build/
-/project/build/
-/project/install/
-/project/log/
-/project/logs/
+build/
+install/
+log/
+logs/
+idl/
 /project/terrain/
 dump*
 QGroundControl_Params/QGroundControl.ini
 project/eeprom.bin
+.vscode/

@@ -14,11 +14,17 @@ find_package(ament_cmake REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/SetSyncState.srv"
+set(MSG_FILES 
   "msg/CarlaAudio.msg"
   "msg/CarlaCameraControl.msg"
   "msg/CarlaMultirotorControl.msg"
+  "msg/VehicleStatus.msg"
+  )
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/SetSyncState.srv"
+  ${MSG_FILES}
+  
   DEPENDENCIES std_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
 )
 
@@ -35,3 +41,15 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+
+foreach(MSG ${MSG_FILES})
+  get_filename_component(FILEDIR "${MSG}" DIRECTORY)
+  get_filename_component(FILENAME "${MSG}" NAME_WE)
+
+  add_custom_command(
+    TARGET carla_interfaces POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+      ${CMAKE_CURRENT_BINARY_DIR}/rosidl_adapter/${PROJECT_NAME}/${FILEDIR}/${FILENAME}.idl
+      ${CMAKE_SOURCE_DIR}/idl/${PROJECT_NAME}/${FILEDIR}/${FILENAME}.idl)
+
+endforeach()
