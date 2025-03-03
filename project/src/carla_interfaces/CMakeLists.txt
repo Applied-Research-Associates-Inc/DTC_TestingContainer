@@ -12,6 +12,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(MSG_FILES 
@@ -19,13 +20,16 @@ set(MSG_FILES
   "msg/CarlaCameraControl.msg"
   "msg/CarlaMultirotorControl.msg"
   "msg/VehicleStatus.msg"
+  "msg/SetActorOdometry.msg"
   )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SetSyncState.srv"
   ${MSG_FILES}
   
-  DEPENDENCIES std_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
+  DEPENDENCIES 
+  std_msgs 
+  geometry_msgs
 )
 
 if(BUILD_TESTING)
