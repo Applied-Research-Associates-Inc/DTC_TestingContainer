@@ -3,7 +3,9 @@
 /project/install/
 /project/log/
 /project/logs/
+idl/
 /project/terrain/
 dump*
 QGroundControl_Params/QGroundControl.ini
 project/eeprom.bin
+.vscode/
