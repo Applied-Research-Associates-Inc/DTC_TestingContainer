@@ -21,6 +21,7 @@ set(MSG_FILES
   "msg/CarlaMultirotorControl.msg"
   "msg/VehicleStatus.msg"
   "msg/SetActorOdometry.msg"
+  "msg/SetActorPhysics.msg"
   )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
