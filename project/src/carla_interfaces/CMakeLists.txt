@@ -17,6 +17,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 set(MSG_FILES 
   "msg/CarlaAudio.msg"
+  "msg/CarlaAudioControl.msg"
   "msg/CarlaCameraControl.msg"
   "msg/CarlaMultirotorControl.msg"
   "msg/VehicleStatus.msg"
