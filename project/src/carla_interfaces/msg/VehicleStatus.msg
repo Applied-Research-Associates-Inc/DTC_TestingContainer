@@ -7,5 +7,7 @@ float32 collision_impulse
 float32 max_impulse
 
 bool standoff_violation
+float32 min_allowed_distance
 float32 current_standoff_distance
 float32 min_standoff_distance
+
