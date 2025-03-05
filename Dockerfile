@@ -1,4 +1,4 @@
-FROM ros:humble-ros-base
+FROM ros:iron-ros-base
 
 RUN set -x \
     && sed -i 's_/archive.ubuntu.com_/us.archive.ubuntu.com_g' /etc/apt/sources.list
@@ -48,7 +48,3 @@ RUN chmod +x /home/dtcbuild/QGroundControl.AppImage
 
 USER dtcbuild
 WORKDIR /home/dtcbuild/project
-
-COPY --chown=dtcbuild:dtcbuild /project /home/dtcbuild/project
-RUN . /opt/ros/humble/setup.sh \
-    && colcon build

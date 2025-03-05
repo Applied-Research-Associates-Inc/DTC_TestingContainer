@@ -4,6 +4,8 @@ services:
     stdin_open: true
     tty: true
     privileged: true
+    network_mode: "host"
+    ipc: "host"
     build:
       dockerfile: ./Dockerfile
     volumes:
@@ -11,6 +13,7 @@ services:
       - ./QGroundControl_Params:/home/dtcbuild/.config/QGroundControl.org
       - /dev/usb:/dev/usb
       - /dev/input:/dev/input
+      - ./project:/home/dtcbuild/project
     environment:
       - DISPLAY=${DISPLAY}
     env_file:
