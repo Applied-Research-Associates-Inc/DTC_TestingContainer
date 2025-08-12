@@ -24,3 +24,4 @@ libxcb-cursor-dev
 fuse3
 '^libxcb.*-dev'
 ros-humble-rviz2
+portaudio19-dev
